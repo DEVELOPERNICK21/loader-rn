@@ -1,10 +1,11 @@
 import React from 'react';
-import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
+import {ActivityIndicator, StyleSheet, Text, View,Alert} from 'react-native';
 import LottieView from 'lottie-react-native';
 
-export default class BasicExample extends React.Component {
-  componentDidMount() {
-    this.animation.play(20, 300);
+export default class App extends React.Component {
+
+  onAnimationComplete=()=>{
+  this.props.navigation.navigate("Profile")  
   }
 
   render() {
@@ -23,6 +24,7 @@ export default class BasicExample extends React.Component {
     //     </View>
     //   );
     // }
+    
 
     return (
       <>
@@ -31,10 +33,10 @@ export default class BasicExample extends React.Component {
         </View>
 
         <LottieView
-          ref={(animation) => {
-            this.animation = animation;
-          }}
-          source={require('./assets/4.json')}
+          source={require('../4.json')}
+          onAnimationFinish={this.onAnimationComplete}
+          autoPlay={true}
+          loop={false}
         />
       </>
     );
